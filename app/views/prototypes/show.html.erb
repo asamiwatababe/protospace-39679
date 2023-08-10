@@ -4,7 +4,7 @@
       <p class="prototype__hedding">
         <%= @prototype.title %>
       </p>
-      <%= link_to "by " + @prototype.user.name, user_path(@prototype.user), class: :prototype__user %>
+      <%= link_to "by #{@prototype.user.name}", user_path(@prototype.user), class: :prototype__user %>
       <%# プロトタイプの投稿者とログインしているユーザーが同じであれば以下を表示する %>
       <% if current_user == @prototype.user %>
         <div class="prototype__manage">
@@ -14,7 +14,13 @@
       <% end %>
       <%# // プロトタイプの投稿者とログインしているユーザーが同じであれば上記を表示する %>
       <div class="prototype__image">
-        <%= image_tag @prototype.image %>
+        <% if @prototype.image.attached? %>
+          <div class="prototype__image">
+            <%= image_tag @prototype.image %>
+          </div>
+        <% else %>
+          <p>No image available</p>
+        <% end %>
       </div>
       <div class="prototype__body">
         <div class="prototype__detail">
