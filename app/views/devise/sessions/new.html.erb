@@ -8,12 +8,12 @@
 
         <div class="field">
           <%= f.label :email %><br />
-          <%= f.email_field  id:"user_email", autofocus: true, autocomplete: "email" %>
+          <%= f.email_field  :email, autofocus: true %>
         </div>
 
         <div class="field">
           <%= f.label :password %><br />
-          <%= f.password_field  id:"user_password", autocomplete: "current-password" %>
+          <%= f.password_field  :password, autocomplete: "off" %>
         </div>
 
         <div class="actions">

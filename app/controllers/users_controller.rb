@@ -2,7 +2,7 @@ class UsersController < ApplicationController
     before_action :move_to_index, except: [:index, :show]
 
     def index
-       
+        
     end
     
     def new
@@ -12,28 +12,22 @@ class UsersController < ApplicationController
     def edit
     end
 
-    def show
+    def show 
         @user = User.find(params[:id])
         @prototypes = @user.prototypes 
     end
 
-    def move_to_index
-        unless user_signed_in?
-            redilect_to action: :index
-        end
-    end
+    #def logout
+       # session[:user_id] = nil
+        #redirect_to root_path
+    #end
 
-    def update
-        if current_user.update(user_params)
-            redirect_to root_path
-        else
-            render :edit, status: :unprocessable_entity
-        end
-    end
+   
     
       private
     
     def user_params
         params.require(:user).permit(:password, :email) 
     end
+    
 end
